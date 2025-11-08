@@ -1,0 +1,9 @@
+{
+    "dbt.enableNewLineagePanel": true,
+    "sqltools.useNodeRuntime": true,
+    "python-envs.pythonProjects": [],
+    "dbt.dbtPythonPathOverride": "${workspaceFolder}/.venv/bin/python",
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.terminal.useEnvFile": true
+}

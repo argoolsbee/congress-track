@@ -1,0 +1,26 @@
+# system
+.DS_Store
+
+# python
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# uv
+.venv
+
+# dbt
+transform/dbt_packages/
+transform/logs/
+transform/target/
+load/*.parquet
+
+# dlt
+.dlt/extract/secrets.toml
+*.duckdb
+
+# ruff
+.ruff_cache/

@@ -1,0 +1,28 @@
+
+name: 'transform'
+version: '1.0.0'
+
+profile: 'transform'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets: 
+  - "dbt_packages"
+  - "target"
+
+models:
+  transform:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    mart:
+      +materialized: table
+
+flags:
+  send_anonymous_usage_stats: False

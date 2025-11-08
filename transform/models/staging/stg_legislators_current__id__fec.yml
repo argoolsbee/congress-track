@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_legislators_current__id__fec
+    description: ""
+    columns:
+      - name: dlt_id
+        data_type: varchar
+        description: ""
+        data_tests:
+          - not_null
+          - unique
+
+      - name: dlt_root_id
+        data_type: varchar
+        description: ""
+
+      - name: dlt_parent_id
+        data_type: varchar
+        description: ""
+
+      - name: dlt_list_idx
+        data_type: bigint
+        description: ""
+
+      - name: value
+        data_type: varchar
+        description: ""

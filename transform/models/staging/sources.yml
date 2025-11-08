@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: congress_legislators
+    description: "Extracted by dlt from https://github.com/unitedstates/congress-legislators"
+    schema: legislators_current  
+    tables:
+      - name: legislators_current
+      - name: legislators_current__family
+      - name: legislators_current__id__fec
+      - name: legislators_current__leadership_roles
+      - name: legislators_current__terms
+      - name: legislators_current__terms__party_affiliations
+

@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: senate_legislators_current
+    description: ""
+    columns:
+      - name: official_full_name
+        data_type: varchar
+        description: ""
+
+      - name: state
+        data_type: varchar
+        description: ""
+
+      - name: party
+        data_type: varchar
+        description: ""
+
+      - name: term_count
+        data_type: bigint
+        description: ""
+
+      - name: first_term_start
+        data_type: date
+        description: ""
+
+      - name: last_term_end
+        data_type: date
+        description: ""
+
+      - name: age
+        data_type: bigint
+        description: ""
+
+      - name: age_first_term_start
+        data_type: bigint
+        description: ""
+
+      - name: age_last_term_end
+        data_type: bigint
+        description: ""
+
+      - name: years_served
+        data_type: bigint
+        description: ""
+
+      - name: years_elected
+        data_type: bigint
+        description: ""
+
+      - name: years_remaining
+        data_type: bigint
+        description: ""

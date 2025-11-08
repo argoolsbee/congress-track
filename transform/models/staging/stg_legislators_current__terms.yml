@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: stg_legislators_current__terms
+    description: ""
+    columns:
+      - name: dlt_id
+        data_type: varchar
+        description: ""
+        data_tests:
+          - not_null
+          - unique
+
+      - name: dlt_root_id
+        data_type: varchar
+        description: ""
+
+      - name: dlt_parent_id
+        data_type: varchar
+        description: ""
+
+      - name: dlt_list_idx
+        data_type: bigint
+        description: ""
+
+      - name: type
+        data_type: varchar
+        description: ""
+
+      - name: start_date
+        data_type: date
+        description: ""
+
+      - name: end_date
+        data_type: date
+        description: ""
+
+      - name: state
+        data_type: varchar
+        description: ""
+
+      - name: district
+        data_type: bigint
+        description: ""
+
+      - name: party
+        data_type: varchar
+        description: ""
+
+      - name: class
+        data_type: bigint
+        description: ""
+
+      - name: url
+        data_type: varchar
+        description: ""
+
+      - name: address
+        data_type: varchar
+        description: ""
+
+      - name: phone
+        data_type: varchar
+        description: ""
+
+      - name: fax
+        data_type: varchar
+        description: ""
+
+      - name: contact_form
+        data_type: varchar
+        description: ""
+
+      - name: office
+        data_type: varchar
+        description: ""
+
+      - name: state_rank
+        data_type: varchar
+        description: ""
+
+      - name: rss_url
+        data_type: varchar
+        description: ""
+
+      - name: caucus
+        data_type: varchar
+        description: ""
+
+      - name: how
+        data_type: varchar
+        description: ""
+
+      - name: end_type
+        data_type: varchar
+        description: ""

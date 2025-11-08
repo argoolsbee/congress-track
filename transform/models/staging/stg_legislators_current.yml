@@ -1,0 +1,104 @@
+version: 2
+
+models:
+  - name: stg_legislators_current
+    description: "Currently serving Members of Congress."
+    columns:
+      - name: dlt_id
+        data_type: varchar
+        description: ""
+        data_tests:
+          - not_null
+          - unique
+
+      - name: bioguide_id
+        data_type: varchar
+        description: ""
+
+      - name: thomas_id
+        data_type: varchar
+        description: ""
+
+      - name: lis_id
+        data_type: varchar
+        description: ""
+
+      - name: govtrack_id
+        data_type: bigint
+        description: ""
+
+      - name: opensecrets_id
+        data_type: varchar
+        description: ""
+
+      - name: votesmart_id
+        data_type: bigint
+        description: ""
+
+      - name: cspan_id
+        data_type: bigint
+        description: ""
+
+      - name: wikipedia_id
+        data_type: varchar
+        description: ""
+
+      - name: house_history_id
+        data_type: bigint
+        description: ""
+
+      - name: ballotpedia_id
+        data_type: varchar
+        description: ""
+
+      - name: maplight_id
+        data_type: bigint
+        description: ""
+
+      - name: icpsr_id
+        data_type: bigint
+        description: ""
+
+      - name: wikidata_id
+        data_type: varchar
+        description: ""
+
+      - name: google_entity_id
+        data_type: varchar
+        description: ""
+
+      - name: pictorial_id
+        data_type: bigint
+        description: ""
+
+      - name: first_name
+        data_type: varchar
+        description: ""
+
+      - name: middle_name
+        data_type: varchar
+        description: ""
+
+      - name: last_name
+        data_type: varchar
+        description: ""
+
+      - name: official_full_name
+        data_type: varchar
+        description: ""
+
+      - name: nickname
+        data_type: varchar
+        description: ""
+
+      - name: name_suffix
+        data_type: varchar
+        description: ""
+
+      - name: birthday
+        data_type: date
+        description: ""
+
+      - name: gender
+        data_type: varchar
+        description: ""
