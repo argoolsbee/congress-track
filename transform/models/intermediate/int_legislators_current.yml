@@ -23,9 +23,15 @@ models:
         data_type: varchar
         description: ""
 
-      - name: state
+      - name: state_code
         data_type: varchar
         description: ""
+
+      - name: state_name
+        data_type: varchar
+        description: ""
+        data_tests:
+          - not_null
 
       - name: party
         data_type: varchar
