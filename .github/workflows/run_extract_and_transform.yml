@@ -23,16 +23,16 @@ jobs:
       run: uv sync --locked --all-extras
 
     - name: Run congress_legislators_pipeline pipeline script
-      run: cd 'extract' && python 'congress_legislators_pipeline.py'
+      run: cd 'extract' && uv run congress_legislators_pipeline.py
 
     - name: Run dbt deps
-      run: cd ../transform && dbt deps
+      run: cd ../transform && uv run dbt deps
 
     - name: Run dbt seed
-      run: dbt seed
+      run: uv run dbt seed
 
     - name: Run dbt run
-      run: dbt run
+      run: uv run dbt run
 
     - name: Run dbt test
-      run: dbt test
+      run: uv run dbt test
