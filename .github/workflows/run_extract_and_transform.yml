@@ -44,9 +44,10 @@ jobs:
         run: git status --ignored
 
       - name: Commit load files
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          commit_message: Update load files
-          file_pattern: '*.parquet'
-          add_options: '--force' # bypass .gitignore
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add --force load/*.parquet
+          git commit -m "Update load data files"
+          git push
           
