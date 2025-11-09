@@ -45,4 +45,5 @@ jobs:
         with:
           commit_message: Update load files
           file_pattern: 'load/*.parquet'
+          add_options: '--force' # bypass .gitignore
           
