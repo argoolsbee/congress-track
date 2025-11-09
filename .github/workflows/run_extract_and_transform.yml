@@ -40,6 +40,9 @@ jobs:
         working-directory: transform
         run: uv run dbt build
 
+      - name: Run git status
+        run: git status
+
       - name: Commit load files
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
