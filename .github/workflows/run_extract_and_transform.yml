@@ -22,13 +22,13 @@ jobs:
     - name: Install the project
       run: uv sync --locked --all-extras
 
-    - name: Run congress_legislators_pipeline pipeline script
-      working-directory: extract
-      run: uv run congress_legislators_pipeline.py
-
     - name: Run dbt deps
       working-directory: transform
       run: uv run dbt deps
+
+    - name: Run congress_legislators_pipeline pipeline
+      working-directory: extract
+      run: uv run congress_legislators_pipeline.py
 
     - name: Run dbt build
       working-directory: transform
