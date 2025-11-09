@@ -7,12 +7,12 @@ renamed as (
         _dlt_root_id as dlt_root_id,
         _dlt_parent_id as dlt_parent_id,
         _dlt_list_idx as dlt_list_idx,
-        type as type_code,
+        type as chamber_code,
         case type
-            when 'rep' THEN 'House of Representatives'
-            when 'sen' Then 'Senate'
+            when 'rep' then 'House of Representatives'
+            when 'sen' then 'Senate'
             else type
-        end as type,
+        end as chamber_name,
         start::date as start_date,
         "end"::date as end_date,
         state,
