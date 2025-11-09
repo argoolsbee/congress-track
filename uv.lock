@@ -182,6 +182,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "dlt", extra = ["cli"] },
     { name = "psutil" },
     { name = "ruff" },
     { name = "sqlfluff" },
@@ -198,10 +199,23 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "dlt", extras = ["cli"], specifier = ">=1.18.2" },
     { name = "psutil", specifier = ">=7.1.3" },
     { name = "ruff", specifier = ">=0.14.3" },
     { name = "sqlfluff", specifier = ">=3.5.0" },
     { name = "watchdog", specifier = ">=6.0.0" },
+]
+
+[[package]]
+name = "cron-descriptor"
+version = "2.0.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7c/31/0b21d1599656b2ffa6043e51ca01041cd1c0f6dacf5a3e2b620ed120e7d8/cron_descriptor-2.0.6.tar.gz", hash = "sha256:e39d2848e1d8913cfb6e3452e701b5eec662ee18bea8cc5aa53ee1a7bb217157", size = 49456, upload-time = "2025-09-03T16:30:22.434Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/21/cc/361326a54ad92e2e12845ad15e335a4e14b8953665007fb514d3393dfb0f/cron_descriptor-2.0.6-py3-none-any.whl", hash = "sha256:3a1c0d837c0e5a32e415f821b36cf758eb92d510e6beff8fbfe4fa16573d93d6", size = 74446, upload-time = "2025-09-03T16:30:21.397Z" },
 ]
 
 [[package]]
@@ -422,6 +436,11 @@ wheels = [
 ]
 
 [package.optional-dependencies]
+cli = [
+    { name = "cron-descriptor" },
+    { name = "pip" },
+    { name = "pipdeptree" },
+]
 duckdb = [
     { name = "duckdb" },
 ]
@@ -999,6 +1018,24 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/a2/2f/16cabcc6426c32218ace36bf0d55955e813f2958afddbf1d391849fee9d1/pillow-12.0.0-cp314-cp314t-win32.whl", hash = "sha256:3830c769decf88f1289680a59d4f4c46c72573446352e2befec9a8512104fa52", size = 6408045, upload-time = "2025-10-15T18:23:53.177Z" },
     { url = "https://files.pythonhosted.org/packages/35/73/e29aa0c9c666cf787628d3f0dcf379f4791fba79f4936d02f8b37165bdf8/pillow-12.0.0-cp314-cp314t-win_amd64.whl", hash = "sha256:905b0365b210c73afb0ebe9101a32572152dfd1c144c7e28968a331b9217b94a", size = 7148282, upload-time = "2025-10-15T18:23:55.316Z" },
     { url = "https://files.pythonhosted.org/packages/c1/70/6b41bdcddf541b437bbb9f47f94d2db5d9ddef6c37ccab8c9107743748a4/pillow-12.0.0-cp314-cp314t-win_arm64.whl", hash = "sha256:99353a06902c2e43b43e8ff74ee65a7d90307d82370604746738a1e0661ccca7", size = 2525630, upload-time = "2025-10-15T18:23:57.149Z" },
+]
+
+[[package]]
+name = "pip"
+version = "25.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fe/6e/74a3f0179a4a73a53d66ce57fdb4de0080a8baa1de0063de206d6167acc2/pip-25.3.tar.gz", hash = "sha256:8d0538dbbd7babbd207f261ed969c65de439f6bc9e5dbd3b3b9a77f25d95f343", size = 1803014, upload-time = "2025-10-25T00:55:41.394Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/44/3c/d717024885424591d5376220b5e836c2d5293ce2011523c9de23ff7bf068/pip-25.3-py3-none-any.whl", hash = "sha256:9655943313a94722b7774661c21049070f6bbb0a1516bf02f7c8d5d9201514cd", size = 1778622, upload-time = "2025-10-25T00:55:39.247Z" },
+]
+
+[[package]]
+name = "pipdeptree"
+version = "2.9.6"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0a/b2/2508e11f44e0e7b136555175f21c121f20642d43ab2a09797b178e968834/pipdeptree-2.9.6.tar.gz", hash = "sha256:f815caf165e89c576ce659b866c7a82ae4590420c2d020a92d32e45097f8bc73", size = 30858, upload-time = "2023-07-14T22:34:19.07Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/41/2c/63ad89d8e01d471b91c0ad4d69ed45f5221f70f3ece6c097beecb7c67f7a/pipdeptree-2.9.6-py3-none-any.whl", hash = "sha256:de93f990d21224297c9f03e057da5a3dc65ff732a0147945dd9421671f13626b", size = 19768, upload-time = "2023-07-14T22:34:17.109Z" },
 ]
 
 [[package]]
