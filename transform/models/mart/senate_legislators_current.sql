@@ -9,7 +9,8 @@ legislator_term_counts as (
 
 select
     trm.official_full_name,
-    trm.state,
+    trm.state_code,
+    trm.state_name,
     trm.party,
     trm.term_count,
     trm.first_term_start,
@@ -22,4 +23,4 @@ select
     trm.years_elected,
     trm.years_remaining
 from legislator_term_counts as trm
-where trm.type_code = 'sen'
+where trm.chamber_code = 'sen'
