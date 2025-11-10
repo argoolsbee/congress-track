@@ -14,7 +14,6 @@ def get_term_data():
     df = pd.read_parquet("load/terms_current.parquet")
     return df
 
-
 def legislator_page():
     button_clear_cache.button_clear_cache()
 
@@ -52,64 +51,33 @@ def legislator_page():
         if df["nickname"].values[0]:
             st.caption(df["nickname"].values[0])
 
-    with header_cols[1]:
-        st.page_link(
-            page=f"https://ballotpedia.org/{df['ballotpedia_id'].values[0]}", label="Ballotpedia"
-        )
-        
-        st.page_link(
-            page=f"https://bioguide.congress.gov/search/bio/{df['bioguide_id'].values[0]}", label="Bioguide"
-        )
+    # External links
+    links = {
+        'Ballotpedia': ('ballotpedia_id', 'https://ballotpedia.org/{}'),
+        'Bioguide': ('bioguide_id', 'https://bioguide.congress.gov/search/bio/{}'),
+        # 'C-SPAN': ('cspan_id', 'https://www.cspan.org/person/?{}'),
+        'Google Knowledge Graph': ('google_entity_id', 'https://www.google.com/search?kgmid={}'),
+        'GovTrack': ('govtrack_id', 'https://www.govtrack.us/congress/members/{}'),
+        # 'House History': ('house_history_id', 'https://history.house.gov/People/Detail/{}'),
+        # 'ICPSR': ('icpsr_id', 'https://icpsr.umich.edu/web/ICPSR/studies/{}'),
+        # 'MapLight': ('maplight_id', 'https://maplight.org/us-congress/legislator/{}'),
+        # 'OpenSecrets': ('opensecrets_id', 'https://www.opensecrets.org/members-of-congress/{}'),
+        # 'Pictorial Directory': ('pictorial_id', 'https://www.pictoraldirectory.com/house/{}'),
+        # 'Congress.gov': ('thomas_id', 'https://www.congress.gov/member/{}'),
+        # 'VoteSmart': ('votesmart_id', 'https://justfacts.votesmart.org/candidate/{}'),
+        'Wikidata': ('wikidata_id', 'https://www.wikidata.org/wiki/{}'),
+        'Wikipedia': ('wikipedia_id', 'https://www.wikipedia.org/wiki/{}')
+    }
 
-        # st.page_link(
-        #     page=f"https://www.cspan.org/person/?{df['cspan_id'].values[0]}", label="C-SPAN"
-        # )
-
-        trimmed = df['google_entity_id'].values[0].split(":", 1)[-1]
-        st.page_link(
-            page=f"https://www.google.com/search?kgmid={trimmed}", label="Google Knowledge Graph"
-        )
-
-        st.page_link(
-            page=f"https://www.govtrack.us/congress/members/{df['govtrack_id'].values[0]}", label="GovTrack"
-        )
-
-        # st.page_link(
-        #     page=f"https://history.house.gov/People/Detail/{df['house_history_id'].values[0]}", label="House History"
-        # )
-
-        # st.page_link(
-        #     page=f"https://icpsr.umich.edu/web/ICPSR/studies/{df['icpsr_id'].values[0]}", label="ICPSR"
-        # )
-
-        # st.page_link(
-        #     page=f"https://maplight.org/us-congress/legislator/{df['maplight_id'].values[0]}", label="MapLight"
-        # )
-
-    with header_cols[2]:
-        # st.page_link(
-        #     page=f"https://www.opensecrets.org/members-of-congress/{df['opensecrets_id'].values[0]}", label="OpenSecrets"
-        # )
-
-        # st.page_link(
-        #     page=f"https://www.pictoraldirectory.com/house/{df['pictorial_id'].values[0]}", label="Pictorial Directory"
-        # )
-
-        # st.page_link(
-        #     page=f"https://www.congress.gov/member/{df['thomas_id'].values[0]}", label="Congress.gov"
-        # )
-
-        # st.page_link(
-        #     page=f"https://justfacts.votesmart.org/candidate/{df['votesmart_id'].values[0]}", label="VoteSmart"
-        # )
-
-        st.page_link(
-            page=f"https://www.wikidata.org/wiki/{df['wikidata_id'].values[0]}", label="Wikidata"
-        )
-
-        st.page_link(
-            page=f"https://www.wikipedia.org/wiki/{df['wikipedia_id'].values[0]}", label="Wikipedia"
-        )
+    split_point = len(links) // 2
+    for i, (label, (id_key, url_template)) in enumerate(links.items()):
+        col = header_cols[1] if i < split_point else header_cols[2]
+        with col:
+            id_value = df[id_key].values[0] 
+            if id_value:
+                if id_key == 'google_entity_id':
+                    id_value = id_value.split(":", 1)[-1]
+                st.page_link(page=url_template.format(id_value), label=label)
 
     st.header(df["chamber_name"].values[0])
 
