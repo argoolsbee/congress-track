@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: congress_legislators
     description: "Extracted by dlt from https://github.com/unitedstates/congress-legislators"
-    schema: legislators_current  
+    schema: congress_legislators
     tables:
       - name: legislators_current
       - name: legislators_current__family
@@ -11,4 +11,12 @@ sources:
       - name: legislators_current__leadership_roles
       - name: legislators_current__terms
       - name: legislators_current__terms__party_affiliations
-
+      - name: legislators_historical
+      - name: legislators_historical__family
+      - name: legislators_historical__id__bioguide_previous
+      - name: legislators_historical__id__fec
+      - name: legislators_historical__leadership_roles
+      - name: legislators_historical__other_names
+      - name: legislators_historical__terms
+      - name: legislators_historical__terms__party_affiliations
+      - name: legislators_social_media
