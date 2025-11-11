@@ -10,9 +10,13 @@ def congress_legislators_source():
     config: RESTAPIConfig = {
         "client": {
             "base_url": "https://unitedstates.github.io/congress-legislators/",
+
         },
         "resource_defaults": {
-            "primary_key": "id__bioguide",
+            "endpoint": {
+                "method": "GET",
+                "paginator": "single_page",
+            },
             "write_disposition": "merge",
         },
         "resources": [
@@ -20,9 +24,22 @@ def congress_legislators_source():
                 "name": "legislators-current",
                 "endpoint": {
                     "path": "legislators-current.json",
-                    "method": "GET",
-                    "paginator": "single_page",
                 },
+                "primary_key": "id__bioguide",
+            },
+            {
+                "name": "legislators-historical",
+                "endpoint": {
+                    "path": "legislators-historical.json",
+                },
+                "primary_key": "id__bioguide",
+            },
+            {
+                "name": "legislators-social-media",
+                "endpoint": {
+                    "path": "legislators-social-media.json",
+                },
+                "primary_key": "id__bioguide",
             },
         ],
     }
@@ -33,8 +50,8 @@ def congress_legislators_source():
 def load_congress_legislators() -> None:
     pipeline = dlt.pipeline(
         pipeline_name="congress_legislators",
-        destination="duckdb",
-        dataset_name="legislators_current",
+        destination=dlt.destinations.duckdb(destination_name="congress_track"),
+        dataset_name="congress_legislators",
         progress="log",
     )
 
