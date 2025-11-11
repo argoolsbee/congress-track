@@ -10,6 +10,12 @@ terms_current as (
 
 ),
 
+social_media as (
+
+    select * from {{ ref('stg_legislators_social_media') }}
+
+),
+
 states as (
 
     select * from {{ ref('stg_us_states') }}
@@ -70,12 +76,25 @@ select
     leg.thomas_id,
     leg.votesmart_id,
     leg.wikidata_id,
-    leg.wikipedia_id
+    leg.wikipedia_id,
+    som.facebook_handle,
+    som.facebook_url,
+    som.instagram_handle,
+    som.instagram_url,
+    som.mastodon_handle,
+    som.mastodon_url,
+    som.twitter_handle,
+    som.twitter_url,
+    som.youtube_handle,
+    som.youtube_url
 from
     legislators_current as leg
 inner join
     term_agg as trm
     on leg.dlt_id = trm.dlt_parent_id
+left join
+    social_media as som
+    on leg.bioguide_id = som.bioguide_id
 left join
     states as sta
     on trm.state = sta.code
