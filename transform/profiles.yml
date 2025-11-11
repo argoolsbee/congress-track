@@ -2,7 +2,7 @@ transform:
   outputs:
     dev:
       type: duckdb
-      path: ../extract/congress_legislators.duckdb
+      path: ../extract/congress_track.duckdb
       schema: transform
       threads: 8
   target: dev
