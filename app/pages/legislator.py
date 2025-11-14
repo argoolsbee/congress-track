@@ -51,6 +51,12 @@ def legislator_page():
         if df["nickname"].values[0]:
             st.caption(df["nickname"].values[0])
 
+    with header_cols[1]:
+        st.page_link(
+            label="Facebook",
+            page=df["facebook_url"].values[0],
+        )
+
     # External links
     links = {
         'Ballotpedia': ('ballotpedia_id', 'https://ballotpedia.org/{}'),

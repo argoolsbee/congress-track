@@ -46,5 +46,15 @@ select
     leg.thomas_id,
     leg.votesmart_id,
     leg.wikidata_id,
-    leg.wikipedia_id
+    leg.wikipedia_id,
+    leg.facebook_handle,
+    leg.facebook_url,
+    leg.instagram_handle,
+    leg.instagram_url,
+    leg.mastodon_handle,
+    leg.mastodon_url,
+    leg.twitter_handle,
+    leg.twitter_url,
+    leg.youtube_handle,
+    leg.youtube_url
 from legislators_current as leg
