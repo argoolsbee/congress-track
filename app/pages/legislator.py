@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 from components import button_clear_cache
+import webbrowser
 
 
 @st.cache_data
@@ -13,6 +14,7 @@ def get_legislator_data():
 def get_term_data():
     df = pd.read_parquet("load/terms_current.parquet")
     return df
+
 
 def legislator_page():
     button_clear_cache.button_clear_cache()
@@ -106,18 +108,18 @@ def legislator_page():
 
     with data_cols[0]:
         st.metric(label="State", value=df["state_name"].values[0])
-        st.metric(label="Age", value=df["age"])
-        st.metric(label="Years Served", value=df["years_served"])
+        st.metric(label="Age", value=df["age"].values[0])
+        st.metric(label="Years Served", value=df["years_served"].values[0])
 
     with data_cols[1]:
         st.metric(label="Party", value=df["party"].values[0])
-        st.metric(label="Age at First Term Start", value=df["age_first_term_start"])
-        st.metric(label="Years Elected", value=df["years_elected"])
+        st.metric(label="Age at First Term Start", value=df["age_first_term_start"].values[0])
+        st.metric(label="Years Elected", value=df["years_elected"].values[0])
 
     with data_cols[2]:
-        st.metric(label="Term Count", value=df["term_count"])
-        st.metric(label="Age at Last Term End", value=df["age_last_term_end"])
-        st.metric(label="Years Remaining", value=df["years_remaining"])
+        st.metric(label="Term Count", value=df["term_count"].values[0])
+        st.metric(label="Age at Last Term End", value=df["age_last_term_end"].values[0])
+        st.metric(label="Years Remaining", value=df["years_remaining"].values[0])
 
     df_terms = get_term_data()
     df_terms = df_terms[df_terms["dlt_parent_id"] == name_filter]
