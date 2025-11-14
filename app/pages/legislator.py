@@ -69,15 +69,30 @@ def legislator_page():
         'Wikipedia': ('wikipedia_id', 'https://www.wikipedia.org/wiki/{}')
     }
 
-    split_point = len(links) // 2
-    for i, (label, (id_key, url_template)) in enumerate(links.items()):
-        col = header_cols[1] if i < split_point else header_cols[2]
-        with col:
-            id_value = df[id_key].values[0] 
-            if id_value:
-                if id_key == 'google_entity_id':
-                    id_value = id_value.split(":", 1)[-1]
-                st.page_link(page=url_template.format(id_value), label=label)
+    # Build available links for selectbox
+    available_links = []
+    for label, (id_key, url_template) in links.items():
+        id_value = df[id_key].values[0]
+        if id_value:
+            if id_key == 'google_entity_id':
+                id_value = id_value.split(":", 1)[-1]
+            available_links.append((label, url_template.format(id_value)))
+
+    with header_cols[2]:
+        if available_links:
+            def open_external_link():
+                webbrowser.open_new_tab(
+                    dict(available_links)[st.session_state.external_links_selectbox]
+                )
+                return None
+
+            st.selectbox(
+                label="External Links",
+                options=[lbl for lbl, _ in available_links],
+                index=None,
+                on_change=open_external_link,
+                key="external_links_selectbox"
+            )
 
     st.header(df["chamber_name"].values[0])
 
