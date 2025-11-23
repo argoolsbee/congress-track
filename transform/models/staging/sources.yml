@@ -1,6 +1,12 @@
 version: 2
 
 sources:
+  - name: congress_gov
+    description: "Extracted by dlt from Congress.gov API v3"
+    schema: congress_gov
+    tables:
+      - name: members
+      - name: members__terms__item
   - name: congress_legislators
     description: "Extracted by dlt from https://github.com/unitedstates/congress-legislators"
     schema: congress_legislators
@@ -11,6 +17,8 @@ sources:
       - name: legislators_current__leadership_roles
       - name: legislators_current__terms
       - name: legislators_current__terms__party_affiliations
+      - name: legislators_district_offices
+      - name: legislators_district_offices__offices
       - name: legislators_historical
       - name: legislators_historical__family
       - name: legislators_historical__id__bioguide_previous
