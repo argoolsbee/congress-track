@@ -3,7 +3,8 @@ on:
   workflow_dispatch: null
 concurrency:
   group: ${{ github.workflow }}
-env: {}
+env:
+  CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 jobs:
   run_extract_and_transform:
     name: extract and transform
@@ -37,6 +38,10 @@ jobs:
       - name: Run congress_legislators_pipeline pipeline
         working-directory: extract
         run: uv run congress_legislators_pipeline.py
+
+      - name: Run congress_gov_api_pipeline pipeline
+        working-directory: extract
+        run: uv run congress_gov_api_pipeline.py
 
       - name: Run dbt build
         working-directory: transform
