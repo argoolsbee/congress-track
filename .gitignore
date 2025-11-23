@@ -19,8 +19,8 @@ transform/target/
 load/*.parquet
 
 # dlt
-.dlt/extract/secrets.toml
 *.duckdb
+extract/.dlt/secrets.toml
 
 # ruff
 .ruff_cache/
