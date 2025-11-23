@@ -24,15 +24,16 @@ renamed as (
         id__votesmart as votesmart_id,
         id__wikidata as wikidata_id,
         id__wikipedia as wikipedia_id,
-        name__official_full as official_full_name,
+        coalesce(name__official_full, name__first || ' ' || name__last) as official_full_name,
         name__first as first_name,
         name__middle as middle_name,
         name__last as last_name,
-        bio__birthday as birthday,
-        bio__gender as gender,
+        name__suffix as name_suffix,
         name__nickname as nickname,
-        name__suffix as suffix
-
+        concat_ws(' ', first_name, middle_name, last_name, name_suffix) as display_name,
+        bio__birthday::date as birthday,
+        bio__gender as gender
+        
     from source
 
 )
