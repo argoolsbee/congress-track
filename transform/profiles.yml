@@ -3,6 +3,9 @@ transform:
     dev:
       type: duckdb
       path: ../extract/congress_track.duckdb
+      extensions:
+        - name: webbed
+          repo: community
       schema: transform
       threads: 8
   target: dev
