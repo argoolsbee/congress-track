@@ -22,6 +22,12 @@ states as (
 
 ),
 
+members as (
+
+    select * from {{ ref('stg_members') }}
+
+),
+
 term_agg as (
     select
         trm.dlt_parent_id,
@@ -39,6 +45,7 @@ term_agg as (
 
 select
     leg.dlt_id,
+    leg.bioguide_id,
     leg.official_full_name,
     leg.display_name,
     leg.first_name,
@@ -62,21 +69,22 @@ select
     age_last_term_end - age as years_remaining,
     cast(trm.years_elected as int) as years_elected,
     cast(years_elected - years_remaining as int) as years_served,
-    leg.ballotpedia_id,
-    leg.bioguide_id,
-    leg.cspan_id,
-    leg.google_entity_id,
-    leg.govtrack_id,
-    leg.house_history_id,
-    leg.icpsr_id,
-    leg.lis_id,
-    leg.maplight_id,
-    leg.opensecrets_id,
-    leg.pictorial_id,
-    leg.thomas_id,
-    leg.votesmart_id,
-    leg.wikidata_id,
-    leg.wikipedia_id,
+    'https://ballotpedia.org/' || leg.ballotpedia_id as ballotpedia_url,
+    'https://bioguide.congress.gov/search/bio/' || leg.bioguide_id as bioguide_url,
+    -- leg.cspan_id,
+    'https://www.google.com/search?kgmid='
+    || substring(leg.google_entity_id from position(':' in leg.google_entity_id) + 1) as google_knowledge_graph_url,
+    'https://www.govtrack.us/congress/members/' || leg.govtrack_id as govtrack_url,
+    -- leg.house_history_id,
+    -- leg.icpsr_id,
+    -- leg.lis_id,
+    -- leg.maplight_id,
+    -- leg.opensecrets_id,
+    -- leg.pictorial_id,
+    -- leg.thomas_id,
+    -- leg.votesmart_id,
+    'https://www.wikidata.org/wiki/' || leg.wikidata_id as wikidata_url,
+    'https://www.wikipedia.org/wiki/' || leg.wikipedia_id as wikipedia_url,
     som.facebook_handle,
     som.facebook_url,
     som.instagram_handle,
@@ -86,7 +94,10 @@ select
     som.twitter_handle,
     som.twitter_url,
     som.youtube_handle,
-    som.youtube_url
+    som.youtube_url,
+    mem.image_url,
+    mem.image_attribution_text,
+    mem.image_attribution_url
 from
     legislators_current as leg
 inner join
@@ -98,5 +109,8 @@ left join
 left join
     states as sta
     on trm.state = sta.code
+left join
+    members as mem
+    on leg.bioguide_id = mem.bioguide_id
 where trm.last_term_end >= today()
 -- Source contains historical data for an active member's time in the other house of congress.
